@@ -1,49 +1,18 @@
 <template>
-  <GoogleMapLoader :mapConfig="mapConfig" :apiKey="apiKey">
-    <template v-slot="{ google, map }">
-      <GoogleMapMarker
-        :key="marker.id"
-        :marker="marker"
-        :google="google"
-        :map="map"
-      />
-    </template>
-  </GoogleMapLoader>
+  <div>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6625.139306403409!2d18.630837!3d-33.87498!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbdd802ca53b92d43!2sSharenet+(Pty)+Ltd!5e0!3m2!1sen!2sza!4v1503321100586"
+      width="100%"
+      height="340"
+      style="border: 0; padding: 0"
+      allowfullscreen=""
+      loading="lazy"
+    ></iframe>
+  </div>
 </template>
 
 <script>
-import GoogleMapLoader from "./google-maps/GoogleMapLoader";
-import GoogleMapMarker from "./google-maps/GoogleMapMarker";
-import { mapSettings } from "@/constants/mapSettings";
-
 export default {
-  components: {
-    GoogleMapLoader,
-    GoogleMapMarker,
-  },
-
-  data() {
-    return {
-      apiKey: "AIzaSyBnmqTU-SN6HXjRxkxhGqulntrYW4Thv2w", //idealy it should be stored securely inside enviroments variables
-      marker: {
-        id: "a",
-        position: { lat: -33.87688, lng: 18.63 },
-        title: "Sharenet (Pty) Ltd",
-      },
-    };
-  },
-
-  computed: {
-    mapConfig() {
-      return {
-        ...mapSettings,
-        center: this.mapCenter,
-      };
-    },
-
-    mapCenter() {
-      return this.marker.position;
-    },
-  },
+  name: "LocationMap",
 };
 </script>
